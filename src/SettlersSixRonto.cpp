@@ -1,21 +1,21 @@
-/*This source code copyrighted by Lazy Foo' Productions 2004-2023
-and may not be redistributed without written permission.*/
 
-//Using SDL and standard IO
 #include <SDL.h>
-#include <stdio.h>
+#include <stdio.h>  // NOLINT(modernize-deprecated-headers)
 
-//Screen dimension constants
-const int SCREEN_WIDTH = 640;
-const int SCREEN_HEIGHT = 480;
+// ReSharper disable once CppInconsistentNaming
+constexpr int SCREEN_WIDTH = 1280;
+// ReSharper disable once CppInconsistentNaming
+constexpr int SCREEN_HEIGHT = 720;
 
-int main(int argc, char* args[])
+int main(int argc, char* argv[])
 {
 	//The window we'll be rendering to
-	SDL_Window* window = NULL;
+	SDL_Window* window = nullptr;
 
 	//The surface contained by the window
-	SDL_Surface* screenSurface = NULL;
+	// ReSharper disable once CppTooWideScope
+	// ReSharper disable once CppInconsistentNaming
+	SDL_Surface* screenSurface = nullptr;
 
 	//Initialize SDL
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -26,7 +26,7 @@ int main(int argc, char* args[])
 	{
 		//Create window
 		window = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-		if (window == NULL)
+		if (window == nullptr)
 		{
 			printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
 		}
@@ -36,7 +36,7 @@ int main(int argc, char* args[])
 			screenSurface = SDL_GetWindowSurface(window);
 
 			//Fill the surface white
-			SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
+			SDL_FillRect(screenSurface, nullptr, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
 
 			//Update the surface
 			SDL_UpdateWindowSurface(window);
